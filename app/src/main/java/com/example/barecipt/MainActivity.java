@@ -138,12 +138,9 @@ public class MainActivity extends AppCompatActivity {
     private void tampilListData() {
         resepHandler = new ArrayList<>();
         swipeRefreshLayout.setRefreshing(true);
-        Log.d("debug1", "masukman");
         StringRequest request = new StringRequest(Request.Method.GET, Constant.RESEP, response ->  {
-            Log.d("debug1", "masukpakeko");
             try {
                 JSONObject object = new JSONObject(response);
-                Log.d("debug1", String.valueOf(object));
                 if (object.getBoolean("success")){
                     db.deleteSemuaData();
                     JSONArray array = new JSONArray(object.getString("data"));
