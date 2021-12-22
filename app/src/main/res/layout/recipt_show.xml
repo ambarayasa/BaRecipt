@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/imgfood"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".27"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1">
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab_layout"
+            app:layout_editor_absoluteX="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="25dp">
+
+                <TextView
+                    android:id="@+id/namaMasakan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/latobold"
+                    android:text="Nama Masakan"
+                    android:textSize="26sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/pilihanMasakan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/namaMasakan"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/radio_selected"
+                    android:fontFamily="@font/latoreguler"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="4dp"
+                    android:text="Pilihan Masakan"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/lamaMemasak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pilihanMasakan"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/latoreguler"
+                    android:text="Lama memasak  : "
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/inputLamaMemasak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pilihanMasakan"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/lamaMemasak"
+                    android:fontFamily="@font/latoreguler"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/inputStatusLamaMemasak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pilihanMasakan"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@+id/inputLamaMemasak"
+                    android:fontFamily="@font/latoreguler"
+                    android:text="menit"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/jenis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lamaMemasak"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/latoreguler"
+                    android:text="Jenis Masakan   : "
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/jenisMasakan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lamaMemasak"
+                    android:layout_toRightOf="@+id/jenis"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Jenis Masakan"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/latoreguler" />
+
+                <TextView
+                    android:id="@+id/bahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/jenisMasakan"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/latoreguler"
+                    android:text="Bahan Masakan"
+                    android:textColor="@color/black"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:id="@+id/bahanMasakan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bahan"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/latoreguler"
+                    android:text="Bahan Masakan"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/langkah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bahanMasakan"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:labelFor="@id/inputLangkahMemasak"
+                    android:text="Langkah Memasak"
+                    android:textSize="26sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/latoreguler" />
+
+                <TextView
+                    android:id="@+id/langkahMemasak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/langkah"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:labelFor="@id/inputLangkahMemasak"
+                    android:text="Langkah Memasak"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="50dp"
+                    android:fontFamily="@font/latoreguler" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/viewbg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

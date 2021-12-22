@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">BaRecipt</string>
+    <string name="nama_masakan">Nama Masakan</string>
+    <string name="lama_memasak">Lama Memasak</string>
+    <string name="jenis_masakan">Jenis Masakan</string>
+    <string name="masakan_bali">Masakan Bali</string>
+    <string name="masakan_indonesia">Masakan Indonesia</string>
+    <string name="masakan_asia">Masakan Asia</string>
+    <string name="masakan_eropa">Masakan Eropa</string>
+    <string name="kategori_masakan">Kategori Masakan</string>
+    <string name="anak_anak">Anak - Anak</string>
+    <string name="dewasa">Dewasa</string>
+    <string name="orang_tua">Orang Tua</string>
+    <string name="selesai">Selesai</string>
+    <string name="kembali">Kembali</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="chief">Chief</string>
+    <string name="simpan">simpan</string>
+    <string name="Menit" />
+    <string name="Jam" />
+    <string name="Hari" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
