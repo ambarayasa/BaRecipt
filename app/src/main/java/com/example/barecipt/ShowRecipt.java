@@ -71,6 +71,7 @@ public class ShowRecipt extends AppCompatActivity {
             tampilBahanMasakan.setText(String.valueOf(bahan));
             tampilLangkahMemasak.setText(String.valueOf(langkah));
 
+            //=== sqlite ===
 //            final DbHelper dbh = new DbHelper(getApplicationContext());
 //            Cursor cursor = dbh.showDetail(id);
 //            cursor.moveToFirst();
@@ -117,51 +118,6 @@ public class ShowRecipt extends AppCompatActivity {
 //        tampilBahanMasakan.setText(bahanMasakan);
 //        tampilLangkahMemasak.setText(langkahMemasak);
     }
-
-//    private void tampilListData() {
-        // Instantiate the RequestQueue.
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url =Constant.EVENTS;
-//        Log.d("debug1", "masukman");
-//        // Request a string response from the provided URL.
-//        StringRequest request = new StringRequest(Request.Method.GET, Constant.RESEP+"/"+id, response ->  {
-//            Log.d("debug1", "masukpakeko");
-////                    @Override
-////                    public void onResponse(String response) {
-//            try {
-//                JSONObject object = new JSONObject(response);
-//                Log.d("debug1", String.valueOf(object));
-//                if (object.getBoolean("success")){
-//                    JSONArray array = new JSONArray(object.getString("data"));
-//                    for(int i=0;i<array.length();i++){
-//                        JSONObject eventObject = array.getJSONObject(i);
-//                        ReciptHandler resepHandlerList = new ReciptHandler();
-//                        resepHandlerList.setId(eventObject.getInt("id"));
-//                        resepHandlerList.setNamaResep(eventObject.getString("nama_resep"));
-//                        resepHandlerList.setLamaMemasak(eventObject.getString("lama_memasak"));
-//                        resepHandlerList.setStatusLamaMemasak(eventObject.getString("status_lama_memasak"));
-//                        resepHandlerList.setPilihan(eventObject.getString("pilihan"));
-//                        resepHandlerList.setJenis(eventObject.getString("jenis"));
-//                        resepHandlerList.setBahan(eventObject.getString("bahan"));
-//                        resepHandlerList.setLangkah(eventObject.getString("langkah"));
-//                        resepHandler.add(resepHandlerList);
-//                    }
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            // Display the first 500 characters of the response string.
-//            Toast.makeText(ShowRecipt.this,"yo",Toast.LENGTH_SHORT).show();
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(ShowRecipt.this,"No Connection",Toast.LENGTH_SHORT).show();
-//            }
-//        });
-// Add the request to the RequestQueue.
-//        RequestQueue queue = Volley.newRequestQueue(ShowRecipt.this);
-//        queue.add(request);
-//    }
 
     @Override
     protected void onStart() {

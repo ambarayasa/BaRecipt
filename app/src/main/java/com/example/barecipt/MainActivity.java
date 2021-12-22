@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//
         db = new DbHelper(this);
-
         preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -66,19 +64,16 @@ public class MainActivity extends AppCompatActivity {
 
 //        String stringSetName = preferences.getString("name","");
 //        String stringSetToken = preferences.getString("token","");
-//
 //        Toast.makeText(getApplicationContext(), stringSetName, Toast.LENGTH_SHORT).show();
 //        Log.d("TAG", stringSetToken);
-
         tampilListData();
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 tampilListData();
             }
         });
-//
+//        === sqlite ===
 //        final DbHelper dbh = new DbHelper(getApplicationContext());
 //        Cursor cursor = dbh.showData();
 //        cursor.moveToFirst();
@@ -101,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
 //        btnDelete = findViewById(R.id.btn_delete);
 //        btnEdit = findViewById(R.id.btn_edit);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,13 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     public void addRecipt(View view) {
         Intent intent = new Intent(MainActivity.this, CreateRecipt.class);
@@ -146,15 +138,9 @@ public class MainActivity extends AppCompatActivity {
     private void tampilListData() {
         resepHandler = new ArrayList<>();
         swipeRefreshLayout.setRefreshing(true);
-        // Instantiate the RequestQueue.
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url =Constant.EVENTS;
         Log.d("debug1", "masukman");
-        // Request a string response from the provided URL.
         StringRequest request = new StringRequest(Request.Method.GET, Constant.RESEP, response ->  {
             Log.d("debug1", "masukpakeko");
-//                    @Override
-//                    public void onResponse(String response) {
             try {
                 JSONObject object = new JSONObject(response);
                 Log.d("debug1", String.valueOf(object));
@@ -190,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             swipeRefreshLayout.setRefreshing(false);
-            // Display the first 500 characters of the response string.
             Toast.makeText(MainActivity.this,"yo",Toast.LENGTH_SHORT).show();
         }, error -> {
             error.printStackTrace();
@@ -203,8 +188,6 @@ public class MainActivity extends AppCompatActivity {
                 return map;
             }
         };
-
-        // Add the request to the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(request);
     }

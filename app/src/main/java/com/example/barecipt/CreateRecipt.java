@@ -174,6 +174,8 @@ public class CreateRecipt extends AppCompatActivity {
                             Intent intent = new Intent(CreateRecipt.this, MainActivity.class);
                             startActivity(intent);
                             finish();
+
+//                            ======= sqlite =======
 //                            DbHelper db = new DbHelper(getApplicationContext());
 //                            ReciptHandler resepHandler = new ReciptHandler();
 //                            resepHandler.setNamaResep(resep_nama);
@@ -183,18 +185,14 @@ public class CreateRecipt extends AppCompatActivity {
 //                            resepHandler.setJenis(hasilJenisMasakan);
 //                            resepHandler.setBahan(resep_bahan);
 //                            resepHandler.setLangkah(resep_langkah);
-//
 //                            boolean tambahResep = db.insertData(resepHandler);
-
 //                            if(tambahResep){
 //                                Toast.makeText(CreateRecipt.this, "Berhasil Tambah Data", Toast.LENGTH_SHORT).show();
 //                            }else{
 //                                Toast.makeText(CreateRecipt.this, "Gagal Tambah Data", Toast.LENGTH_SHORT).show();
 //                            }
-//
 //                            ==== mod 2 intent ===
 //                            Intent intent = new Intent(CreateRecipt.this, ShowRecipt.class);
-//
 //                            intent.putExtra("namaResepIntent", namaResep.getText().toString());
 //                            intent.putExtra("waktuMasakIntent", hasilWaktuMasak);
 //                            intent.putExtra("pilihanMasakanIntent", radioButtonPilihanMasakan.getText().toString());
@@ -246,15 +244,11 @@ public class CreateRecipt extends AppCompatActivity {
     }
 
     private void insertResepWebserver(){
-        // Instantiate the RequestQueue.
         String url = Constant.TAMBAH_RESEP;
-
-    // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
                         try {
                             JSONObject object = new JSONObject(response);
                             if(object.getBoolean("success")){
@@ -275,7 +269,6 @@ public class CreateRecipt extends AppCompatActivity {
                                 resepHandlerList.setBahan(resepObject.getString(  "bahan"));
                                 resepHandlerList.setLangkah(resepObject.getString(  "langkah"));
 
-//                                MainActivity.recyclerView.clear
                                 MainActivity.resepHandler.add(0, resepHandlerList);
                                 MainActivity.recyclerView.getAdapter().notifyItemInserted(0);
                                 MainActivity.recyclerView.getAdapter().notifyDataSetChanged();
@@ -291,18 +284,6 @@ public class CreateRecipt extends AppCompatActivity {
                 Toast.makeText(CreateRecipt.this,"Add Gagal",Toast.LENGTH_SHORT).show();
             }
         }){
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                HashMap<String, String> map = new HashMap<>();
-//                map.put("nama_resep",resep_nama);
-//                map.put("lama_masakan", hasilWaktuMasak);
-//                map.put("status_lama_masakan", resep_status_waktu);
-//                map.put("pilihan", resep_pilihan);
-//                map.put("jenis", hasilJenisMasakan);
-//                map.put("bahan", resep_bahan);
-//                map.put("langkah", resep_langkah);
-//                return map;
-//            }
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -327,7 +308,6 @@ public class CreateRecipt extends AppCompatActivity {
             }
         };
         RequestQueue queue = Volley.newRequestQueue(CreateRecipt.this);
-        // Add the request to the RequestQueue.
         queue.add(stringRequest);
     }
 }

@@ -56,10 +56,10 @@ public class LoginUser extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                boolean isValidasi = validasi();
-//                if(isValidasi){
+                boolean isValidasi = validasi();
+                if(isValidasi){
                     login();
-//                }
+                }
             }
         });
 
@@ -80,9 +80,6 @@ public class LoginUser extends AppCompatActivity {
     }
 
     private void login(){
-//        dialog.setMessage("Registering");
-//        dialog.show();
-
         StringRequest request = new StringRequest(Request.Method.POST, Constant.LOGIN, response -> {
             try {
                 JSONObject object = new JSONObject(response);
@@ -108,9 +105,7 @@ public class LoginUser extends AppCompatActivity {
 
         }, error -> {
             error.printStackTrace();
-//            dialog.dismiss();
         }){
-
             protected Map<String, String> getParams() throws AuthFailureError{
                 HashMap<String, String> map = new HashMap<>();
                 map.put("email",email_login.getText().toString().trim());
@@ -118,7 +113,6 @@ public class LoginUser extends AppCompatActivity {
                 return map;
             }
         };
-
         RequestQueue queue = Volley.newRequestQueue(LoginUser.this);
         queue.add(request);
     }

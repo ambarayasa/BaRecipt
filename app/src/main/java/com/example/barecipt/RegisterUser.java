@@ -34,7 +34,6 @@ public class RegisterUser extends AppCompatActivity {
     private TextView textView_login;
     private Button btn_register;
     private String email_r, password_r, name_r;
-//    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +45,6 @@ public class RegisterUser extends AppCompatActivity {
         nama_register = findViewById(R.id.nama_register);
         btn_register = findViewById(R.id.btn_daftar);
         textView_login = findViewById(R.id.link_login);
-//        dialog = new ProgressDialog(RegisterUser.this);
-//        dialog.setCancelable(false);
 
         textView_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,20 +57,18 @@ public class RegisterUser extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                boolean isValidasi = validasi();
-//                if(isValidasi){
-//
-//                }
-                email_r = email_register.getText().toString().trim();
-                Log.d("email masuk", email_r);
-                password_r = password_register.getText().toString();
-                Log.d("pass masuk", password_r);
-                name_r = nama_register.getText().toString();
-                Log.d("nama masuk", name_r);
-                register();
+                boolean isValidasi = validasi();
+                if(isValidasi){
+                    email_r = email_register.getText().toString().trim();
+                    Log.d("email masuk", email_r);
+                    password_r = password_register.getText().toString();
+                    Log.d("pass masuk", password_r);
+                    name_r = nama_register.getText().toString();
+                    Log.d("nama masuk", name_r);
+                    register();
+                }
             }
         });
-
     }
 
     private boolean validasi(){
@@ -95,13 +90,11 @@ public class RegisterUser extends AppCompatActivity {
     }
 
     private void register(){
-//        dialog.setMessage("Registering");
-//        dialog.show();
-        Log.d("mamam1", "pertama");
+//        Log.d("mamam1", "pertama");
         StringRequest request = new StringRequest(Request.Method.POST, Constant.REGISTER, response -> {
             try {
                 JSONObject object = new JSONObject(response);
-                Log.d("mamam2", String.valueOf(object));
+//                Log.d("mamam2", String.valueOf(object));
                 if(object.getBoolean("success")){
                     JSONObject user = object.getJSONObject("user");
                     SharedPreferences userPref = RegisterUser.this.getApplication().getSharedPreferences("user", MODE_PRIVATE);
@@ -119,14 +112,14 @@ public class RegisterUser extends AppCompatActivity {
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
-                Log.d("mamam3", "catch error");
+//                Log.d("mamam3", "catch error");
             }
 //            dialog.dismiss();
-            Log.d("mamam4", "aaaaaa");
+//            Log.d("mamam4", "aaaaaa");
         }, error -> {
             error.printStackTrace();
 //            dialog.dismiss();
-            Log.d("mamam5", "error connection");
+//            Log.d("mamam5", "error connection");
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -137,7 +130,6 @@ public class RegisterUser extends AppCompatActivity {
                 return map;
             }
         };
-
         RequestQueue queue = Volley.newRequestQueue(RegisterUser.this);
         queue.add(request);
     }

@@ -272,6 +272,7 @@ public class EditRecipt extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
                         editResepWebserver();
+                        //    === sqlite ===
 //                            DbHelper db = new DbHelper(getApplicationContext());
 //                            ReciptHandler resepHandler = new ReciptHandler();
 //                            resepHandler.setNamaResep(resep_nama);
@@ -294,16 +295,6 @@ public class EditRecipt extends AppCompatActivity {
                         Intent intent = new Intent(EditRecipt.this, MainActivity.class);
                         startActivity(intent);
                         finish();
-//                            ==== mod 2 intent ===
-//                            Intent intent = new Intent(CreateRecipt.this, ShowRecipt.class);
-//
-//                            intent.putExtra("namaResepIntent", namaResep.getText().toString());
-//                            intent.putExtra("waktuMasakIntent", hasilWaktuMasak);
-//                            intent.putExtra("pilihanMasakanIntent", radioButtonPilihanMasakan.getText().toString());
-//                            intent.putExtra("jenisMasakanIntent", hasilJenisMasakan);
-//                            intent.putExtra("bahanMasakanIntent", bahanMasakan.getText().toString());
-//                            intent.putExtra("langkahMemasakIntent", langkahMemasak.getText().toString());
-//                            intent.putExtra("tipeWaktuIntent", radioButtonTipeWaktu.getText().toString());
                     }
                 });
 
@@ -320,14 +311,11 @@ public class EditRecipt extends AppCompatActivity {
     }
 
     private void editResepWebserver() {
-        // Instantiate the RequestQueue.
         String url = Constant.UPDATE_RESEP;
-        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
                         try {
                             JSONObject object = new JSONObject(response);
                             if (object.getBoolean("success")) {
@@ -373,21 +361,16 @@ public class EditRecipt extends AppCompatActivity {
                 return map;
             }
         };
-
-        // Add the request to the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
     }
 
     private void deleteResepWebserver(int id, int position) {
-        // Instantiate the RequestQueue.
         String url = Constant.DELETE_RESEP;
-        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
                         try {
                             JSONObject object = new JSONObject(response);
                             if (object.getBoolean("success")) {
@@ -419,8 +402,6 @@ public class EditRecipt extends AppCompatActivity {
                 return map;
             }
         };
-
-        // Add the request to the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest);
     }
