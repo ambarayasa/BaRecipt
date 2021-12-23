@@ -6,46 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:id="@+id/pana1"
         android:layout_width="380dp"
         android:layout_height="150dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/pana1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:src="@drawable/chef"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/userNama" />
 
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/latobold"
         android:text="@string/selamat_datang"
-        app:layout_constraintLeft_toRightOf="@+id/imageView3"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/chef"
+        android:id="@+id/userNama"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="@string/chief"
-        app:layout_constraintLeft_toRightOf="@id/imageView3"
+        android:fontFamily="@font/latoreguler"
+        android:textSize="18dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <TextView
@@ -94,6 +88,8 @@
         android:id="@+id/swipeMain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text2"
@@ -106,17 +102,4 @@
             android:layout_height="match_parent"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <!--        <Button-->
-<!--        android:id="@+id/add_button"-->
-<!--        android:layout_width="70dp"-->
-<!--        android:layout_height="70dp"-->
-<!--        android:layout_marginEnd="40dp"-->
-<!--        android:layout_marginBottom="40dp"-->
-<!--        android:background="@drawable/ic_baseline_add_circle_24"-->
-<!--        android:onClick="addRecipt"-->
-<!--        android:textSize="35sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

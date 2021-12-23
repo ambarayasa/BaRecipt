@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_edit, btn_delete;
     private SharedPreferences preferences;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private TextView userNama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = new DbHelper(this);
+
         preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        userNama = findViewById(R.id.userNama);
+        userNama.setText((String.valueOf(preferences.getString("name",""))));
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
 //        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
@@ -114,8 +118,12 @@ public class MainActivity extends AppCompatActivity {
                         "BaRecipt merupakan aplikasi pencatatan resep makanan dimana user dapat" +
                                 " menginputkan resep masakannya sendiri ke dalam aplikasi yang" +
                                 " disimpan ke dalam database\n\n" +
-                                "Nama  : I Gede Nyoman Ambara Yasa\n" +
-                                "NIM     : 1905551115"
+                                "1. Fatliana Kamsia (1905551001)\n" +
+                                "2. I Gede Nyoman Ambara Yasa (1905551115)\n" +
+                                "3. Ni Komang Sucitra Ardhani (1905551132)\n" +
+                                "4. I Dewa Gede Suryadiantha Wedagama (1905551138)\n" +
+                                "5. I Made Indra Wahyu Wicaksana (1905551151)\n" +
+                                "6. Afrizal Dwi Setiawan (1905551162)"
                 );
                 builder.setNegativeButton("Kembali", new DialogInterface.OnClickListener() {
                     @Override
@@ -173,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             swipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(MainActivity.this,"yo",Toast.LENGTH_SHORT).show();
         }, error -> {
             error.printStackTrace();
         }){

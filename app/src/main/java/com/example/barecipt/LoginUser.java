@@ -83,7 +83,6 @@ public class LoginUser extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, Constant.LOGIN, response -> {
             try {
                 JSONObject object = new JSONObject(response);
-                Log.d("cie object", String.valueOf(object));
                 if(object.getBoolean("success")){
                     JSONObject user = object.getJSONObject("user");
                     SharedPreferences userPref = LoginUser.this.getApplication().getSharedPreferences("user", MODE_PRIVATE);

@@ -209,8 +209,9 @@ public class EditRecipt extends AppCompatActivity {
 //                                }
 
                                 deleteResepWebserver(id, position);
-                                Intent mainIntent = new Intent(EditRecipt.this, MainActivity.class);
-                                startActivity(mainIntent);
+//                                Intent mainIntent = new Intent(EditRecipt.this, MainActivity.class);
+//                                startActivity(mainIntent);
+                                finish();
                             }
                         })
                         .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -292,8 +293,8 @@ public class EditRecipt extends AppCompatActivity {
 //                            }
 //                            db.close();
 
-                        Intent intent = new Intent(EditRecipt.this, MainActivity.class);
-                        startActivity(intent);
+//                        Intent intent = new Intent(EditRecipt.this, MainActivity.class);
+//                        startActivity(intent);
                         finish();
                     }
                 });
@@ -301,7 +302,6 @@ public class EditRecipt extends AppCompatActivity {
                 builder.setNegativeButton("Belum", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 AlertDialog alertDialog = builder.create();
