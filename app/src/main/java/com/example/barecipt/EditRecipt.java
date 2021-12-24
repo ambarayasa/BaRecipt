@@ -191,11 +191,21 @@ public class EditRecipt extends AppCompatActivity {
                         .setPositiveButton("Yakin", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
-                                deleteResepWebserver(id, position);
-//                                Intent mainIntent = new Intent(EditRecipt.this, MainActivity.class);
-//                                startActivity(mainIntent);
-                                finish();
+                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://103.214.113.148/",
+                                        new Response.Listener<String>() {
+                                            @Override
+                                            public void onResponse(String response) {
+                                                deleteResepWebserver(id, position);
+                                                finish();
+                                            }
+                                        }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(EditRecipt.this, "Aplikasi sedang offline, fitur tidak dapat dijalankan", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                RequestQueue queue = Volley.newRequestQueue(EditRecipt.this);
+                                queue.add(stringRequest);
                             }
                         })
                         .setNegativeButton(Html.fromHtml("<font color='#777B7E'>Tidak</font>"), new DialogInterface.OnClickListener() {
@@ -255,13 +265,25 @@ public class EditRecipt extends AppCompatActivity {
                 builder.setPositiveButton("Selesai", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
-                        editResepWebserver();
-                        finish();
+                        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://103.214.113.148/",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        editResepWebserver();
+                                        finish();
+                                    }
+                                }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(EditRecipt.this, "Aplikasi sedang offline, fitur tidak dapat dijalankan", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        RequestQueue queue = Volley.newRequestQueue(EditRecipt.this);
+                        queue.add(stringRequest);
                     }
                 });
 
-                builder.setNegativeButton(Html.fromHtml("<font color='#48494B'>Belum</font>"), new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#777B7E'>Belum</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }

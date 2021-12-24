@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     public static SwipeRefreshLayout swipeRefreshLayout;
     private TextView userNama;
+    boolean keluarAplikasi = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +67,22 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         swipeRefreshLayout = findViewById(R.id.swipeMain);
 
-        tampilListData();
+//        tampilListData();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://103.214.113.148/",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        tampilListData();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                tampilListSqlite();
+            }
+        });
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        queue.add(stringRequest);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -80,6 +98,27 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.example_menu, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //keluar aplikasi backbutton
+        if (keluarAplikasi) {
+            super.onBackPressed();
+            return;
+        }
+        this.keluarAplikasi = true;
+        Toast.makeText(this, "Tekan kembali untuk keluar", Toast.LENGTH_SHORT).show();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        }, 2000);
     }
 
     @Override
@@ -191,5 +230,28 @@ public class MainActivity extends AppCompatActivity {
         };
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(request);
+    }
+
+    private void tampilListSqlite(){
+        db = new DbHelper(MainActivity.this);
+
+        final DbHelper dbh = new DbHelper(getApplicationContext());
+        Cursor cursor = dbh.showData();
+        cursor.moveToFirst();
+        if(cursor.getCount()>0){
+            while(!cursor.isAfterLast()){
+                ReciptHandler resepHandlerList = new ReciptHandler();
+                resepHandlerList.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
+                resepHandlerList.setNamaResep(cursor.getString(cursor.getColumnIndexOrThrow("nama_resep")));
+                resepHandlerList.setPilihan(cursor.getString(cursor.getColumnIndexOrThrow("pilihan")));
+                resepHandler.add(resepHandlerList);
+                cursor.moveToNext();
+            }
+        }
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        mainAdapter = new MainAdapter(resepHandler, MainActivity.this, recyclerView);
+        recyclerView.setAdapter(mainAdapter);
     }
 }

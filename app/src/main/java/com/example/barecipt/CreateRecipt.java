@@ -169,20 +169,18 @@ public class CreateRecipt extends AppCompatActivity {
                     builder.setPositiveButton("Selesai", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-//                                    insertResepWebserver();
-//                                    finish();
                                     StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://103.214.113.148/",
                                             new Response.Listener<String>() {
                                                 @Override
                                                 public void onResponse(String response) {
                                                     insertResepWebserver();
                                                     finish();
-                                                    Toast.makeText(CreateRecipt.this,"Koneksi berhasil !",Toast.LENGTH_SHORT).show();
                                                 }
                                             }, new Response.ErrorListener() {
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
-                                            Toast.makeText(CreateRecipt.this,"Koneksi gagal !",Toast.LENGTH_SHORT).show();
+                                            insertResepSqlite();
+                                            finish();
                                         }
                                     });
                                     RequestQueue queue = Volley.newRequestQueue(CreateRecipt.this);
@@ -227,6 +225,28 @@ public class CreateRecipt extends AppCompatActivity {
         else{
             return true;
         }
+    }
+
+    private void insertResepSqlite(){
+        DbHelper db = new DbHelper(getApplicationContext());
+        ReciptHandler resepHandler = new ReciptHandler();
+        resepHandler.setNamaResep(resep_nama);
+        resepHandler.setLamaMemasak(hasilWaktuMasak);
+        resepHandler.setStatusLamaMemasak(resep_status_waktu);
+        resepHandler.setPilihan(resep_pilihan);
+        resepHandler.setJenis(hasilJenisMasakan);
+        resepHandler.setBahan(resep_bahan);
+        resepHandler.setLangkah(resep_langkah);
+
+        boolean tambahResep = db.insertData(resepHandler);
+
+        if(tambahResep){
+            Toast.makeText(CreateRecipt.this, "Aplikasi sedang offline, data disimpan secara offline", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(CreateRecipt.this, "Gagal Tambah Data", Toast.LENGTH_SHORT).show();
+        }
+        Intent intent = new Intent(CreateRecipt.this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void insertResepWebserver(){

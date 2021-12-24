@@ -60,12 +60,24 @@ public class RegisterUser extends AppCompatActivity {
                 boolean isValidasi = validasi();
                 if(isValidasi){
                     email_r = email_register.getText().toString().trim();
-                    Log.d("email masuk", email_r);
                     password_r = password_register.getText().toString();
-                    Log.d("pass masuk", password_r);
                     name_r = nama_register.getText().toString();
-                    Log.d("nama masuk", name_r);
-                    register();
+
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET,"http://103.214.113.148/",
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    register();
+                                    Toast.makeText(RegisterUser.this,"Selamat Datang !",Toast.LENGTH_SHORT).show();
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(RegisterUser.this,"Koneksi tidak tersambung, harap online terlebih dahulu untuk lanjut!",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    RequestQueue queue = Volley.newRequestQueue(RegisterUser.this);
+                    queue.add(stringRequest);
                 }
             }
         });

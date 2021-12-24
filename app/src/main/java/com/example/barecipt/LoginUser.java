@@ -62,13 +62,12 @@ public class LoginUser extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     login();
-                                    Toast.makeText(LoginUser.this,"Koneksi berhasil !",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginUser.this,"Selamat Datang !",Toast.LENGTH_SHORT).show();
                                 }
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-//                            loginOffline
-                            Toast.makeText(LoginUser.this,"Koneksi gagal !",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginUser.this,"Koneksi tidak tersambung, harap online terlebih dahulu untuk lanjut!",Toast.LENGTH_SHORT).show();
                         }
                     });
                     RequestQueue queue = Volley.newRequestQueue(LoginUser.this);
@@ -93,6 +92,11 @@ public class LoginUser extends AppCompatActivity {
         else{
             return true;
         }
+    }
+
+    private void loginOffline(){
+        Intent intentMain = new Intent(LoginUser.this, MainActivity.class);
+        startActivity(intentMain);
     }
 
     private void login(){
