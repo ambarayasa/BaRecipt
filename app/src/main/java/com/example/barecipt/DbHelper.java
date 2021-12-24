@@ -24,11 +24,44 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db){
         db.execSQL("CREATE TABLE tb_resep (id INTEGER PRIMARY KEY AUTOINCREMENT, nama_resep TEXT, lama_masakan TEXT," +
                 "status_lama_masakan TEXT, pilihan TEXT, jenis TEXT, bahan TEXT, langkah TEXT)");
+        db.execSQL("CREATE TABLE tb_user (id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, email TEXT," +
+                "password TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS tb_resep");
+        db.execSQL("DROP TABLE IF EXISTS tb_user");
+    }
+
+    public boolean cekEmail(String email){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM tb_user WHERE email = ?", new String[]{email});
+        if (cursor.getCount()>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean cekPassword(String password){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM tb_user WHERE password = ?", new String[]{password});
+        if (cursor.getCount()>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public int cekEmailnPassword(String email, String password){
+        int id = -1;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM tb_user WHERE email = ? AND password = ?", new String[]{email, password});
+        while (cursor.moveToNext()) {
+            id = Integer.valueOf(cursor.getString(0));
+        }
+        return id;
     }
 
     public boolean insertData (ReciptHandler resepHandler){

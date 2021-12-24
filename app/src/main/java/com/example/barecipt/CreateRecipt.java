@@ -167,44 +167,28 @@ public class CreateRecipt extends AppCompatActivity {
                                     "Langkah Memasak  : \n" + resep_langkah + ""
                     );
                     builder.setPositiveButton("Selesai", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            // webserver
-                            StringRequest stringRequest = new StringRequest(Request.Method.POST, "https//www.google.com",
-                                    new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-                                        insertResepWebserver();
-                                        Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
-                                    }
-                                }, new Response.ErrorListener() {
                                 @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    //sqlite
-                                    DbHelper db = new DbHelper(getApplicationContext());
-                                    ReciptHandler resepHandler = new ReciptHandler();
-                                    resepHandler.setNamaResep(resep_nama);
-                                    resepHandler.setLamaMemasak(hasilWaktuMasak);
-                                    resepHandler.setStatusLamaMemasak(resep_status_waktu);
-                                    resepHandler.setPilihan(resep_pilihan);
-                                    resepHandler.setJenis(hasilJenisMasakan);
-                                    resepHandler.setBahan(resep_bahan);
-                                    resepHandler.setLangkah(resep_langkah);
-
-                                    boolean tambahResep = db.insertData(resepHandler);
-
-                                    if(tambahResep){
-                                        Toast.makeText(CreateRecipt.this, "Berhasil Tambah Data", Toast.LENGTH_SHORT).show();
-                                    }else{
-                                        Toast.makeText(CreateRecipt.this, "Gagal Tambah Data", Toast.LENGTH_SHORT).show();
-                                    }
-                                    Toast.makeText(CreateRecipt.this,"Masakan berhasil kamu simpan !",Toast.LENGTH_SHORT).show();
+                                public void onClick(DialogInterface dialogInterface, int i) {
+//                                    insertResepWebserver();
+//                                    finish();
+                                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://103.214.113.148/",
+                                            new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+                                                    insertResepWebserver();
+                                                    finish();
+                                                    Toast.makeText(CreateRecipt.this,"Koneksi berhasil !",Toast.LENGTH_SHORT).show();
+                                                }
+                                            }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Toast.makeText(CreateRecipt.this,"Koneksi gagal !",Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    RequestQueue queue = Volley.newRequestQueue(CreateRecipt.this);
+                                    queue.add(stringRequest);
                                 }
                             });
-                            RequestQueue queue = Volley.newRequestQueue(CreateRecipt.this);
-                            queue.add(stringRequest);
-                        }
-                    });
 
                     builder.setNegativeButton(Html.fromHtml("<font color='#777B7E'>Belum</font>"), new DialogInterface.OnClickListener() {
                         @Override
@@ -246,8 +230,7 @@ public class CreateRecipt extends AppCompatActivity {
     }
 
     private void insertResepWebserver(){
-        String url = Constant.TAMBAH_RESEP;
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constant.TAMBAH_RESEP,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -56,8 +57,24 @@ public class LoginUser extends AppCompatActivity {
             public void onClick(View view) {
                 boolean isValidasi = validasi();
                 if(isValidasi){
-                    login();
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET,"http://103.214.113.148/",
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    login();
+                                    Toast.makeText(LoginUser.this,"Koneksi berhasil !",Toast.LENGTH_SHORT).show();
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+//                            loginOffline
+                            Toast.makeText(LoginUser.this,"Koneksi gagal !",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    RequestQueue queue = Volley.newRequestQueue(LoginUser.this);
+                    queue.add(stringRequest);
                 }
+
             }
         });
 
