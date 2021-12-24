@@ -53,9 +53,9 @@
                     android:id="@+id/namaResep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/latobold"
                     android:labelFor="@id/inputNamaResep"
                     android:text="@string/nama_masakan"
-                    android:fontFamily="@font/latobold"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -65,8 +65,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/namaResep"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/latoreguler"
                     android:background="@drawable/rounded_shape"
+                    android:fontFamily="@font/latoreguler"
                     android:hint="Masukan nama masakanmu..."
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
@@ -85,8 +85,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Lama Memasak : "
                         android:fontFamily="@font/latobold"
+                        android:text="Lama Memasak : "
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -106,8 +106,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/latobold"
                         android:layout_toRightOf="@+id/nilaiWaktuMasak"
+                        android:fontFamily="@font/latobold"
                         android:text=" menit"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -179,8 +179,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rl_seekbar"
                     android:layout_marginTop="10dp"
-                    android:text="Pilihan Masakan"
                     android:fontFamily="@font/latobold"
+                    android:text="Pilihan Masakan"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -231,9 +231,9 @@
                         android:id="@+id/jenisMasakan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/latobold"
                         android:text="Jenis Masakan"
                         android:textSize="20sp"
-                        android:fontFamily="@font/latobold"
                         android:textStyle="bold" />
 
                     <CheckBox

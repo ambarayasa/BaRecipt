@@ -169,12 +169,40 @@ public class CreateRecipt extends AppCompatActivity {
                     builder.setPositiveButton("Selesai", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
-                            insertResepWebserver();
+                            // webserver
+                            StringRequest stringRequest = new StringRequest(Request.Method.POST, "https//www.google.com",
+                                    new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        insertResepWebserver();
+                                        Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
+                                    }
+                                }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    //sqlite
+                                    DbHelper db = new DbHelper(getApplicationContext());
+                                    ReciptHandler resepHandler = new ReciptHandler();
+                                    resepHandler.setNamaResep(resep_nama);
+                                    resepHandler.setLamaMemasak(hasilWaktuMasak);
+                                    resepHandler.setStatusLamaMemasak(resep_status_waktu);
+                                    resepHandler.setPilihan(resep_pilihan);
+                                    resepHandler.setJenis(hasilJenisMasakan);
+                                    resepHandler.setBahan(resep_bahan);
+                                    resepHandler.setLangkah(resep_langkah);
 
-                            Intent intent = new Intent(CreateRecipt.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                                    boolean tambahResep = db.insertData(resepHandler);
+
+                                    if(tambahResep){
+                                        Toast.makeText(CreateRecipt.this, "Berhasil Tambah Data", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(CreateRecipt.this, "Gagal Tambah Data", Toast.LENGTH_SHORT).show();
+                                    }
+                                    Toast.makeText(CreateRecipt.this,"Masakan berhasil kamu simpan !",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            RequestQueue queue = Volley.newRequestQueue(CreateRecipt.this);
+                            queue.add(stringRequest);
                         }
                     });
 
@@ -246,7 +274,7 @@ public class CreateRecipt extends AppCompatActivity {
                                 MainActivity.resepHandler.add(0, resepHandlerList);
                                 MainActivity.recyclerView.getAdapter().notifyItemInserted(0);
                                 MainActivity.recyclerView.getAdapter().notifyDataSetChanged();
-                                Toast.makeText(CreateRecipt.this, "Tambah sukses", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -255,7 +283,7 @@ public class CreateRecipt extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(CreateRecipt.this,"Add Gagal",Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateRecipt.this,"Masakan gagal kamu simpan !",Toast.LENGTH_SHORT).show();
             }
         }){
 

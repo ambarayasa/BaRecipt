@@ -52,8 +52,8 @@
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/latobold"
                     android:text="Nama Masakan"
-                    android:textSize="26sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textSize="26sp" />
 
                 <TextView
                     android:id="@+id/pilihanMasakan"

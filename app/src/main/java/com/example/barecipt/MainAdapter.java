@@ -97,6 +97,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 String itemJenisMasakan = String.valueOf(resepHandler.getJenis());
                 String itemBahanMasakan = String.valueOf(resepHandler.getBahan());
                 String itemLangkahMasakan = String.valueOf(resepHandler.getLangkah());
+
+                //intent ke show
                 Intent detailIntent = new Intent(holder.itemView.getContext(), ShowRecipt.class);
                 detailIntent.putExtra("id", itemId);
                 detailIntent.putExtra("nama_resep", itemName);
