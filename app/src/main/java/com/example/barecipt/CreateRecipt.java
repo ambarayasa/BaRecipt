@@ -72,7 +72,6 @@ public class CreateRecipt extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btn_submit);
         preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
 
-
         //seekbar
         seekbarWaktuMasak.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -172,42 +171,16 @@ public class CreateRecipt extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
                             insertResepWebserver();
+
                             Intent intent = new Intent(CreateRecipt.this, MainActivity.class);
                             startActivity(intent);
                             finish();
-
-//                            ======= sqlite =======
-//                            DbHelper db = new DbHelper(getApplicationContext());
-//                            ReciptHandler resepHandler = new ReciptHandler();
-//                            resepHandler.setNamaResep(resep_nama);
-//                            resepHandler.setLamaMemasak(hasilWaktuMasak);
-//                            resepHandler.setStatusLamaMemasak(resep_status_waktu);
-//                            resepHandler.setPilihan(resep_pilihan);
-//                            resepHandler.setJenis(hasilJenisMasakan);
-//                            resepHandler.setBahan(resep_bahan);
-//                            resepHandler.setLangkah(resep_langkah);
-//                            boolean tambahResep = db.insertData(resepHandler);
-//                            if(tambahResep){
-//                                Toast.makeText(CreateRecipt.this, "Berhasil Tambah Data", Toast.LENGTH_SHORT).show();
-//                            }else{
-//                                Toast.makeText(CreateRecipt.this, "Gagal Tambah Data", Toast.LENGTH_SHORT).show();
-//                            }
-//                            ==== mod 2 intent ===
-//                            Intent intent = new Intent(CreateRecipt.this, ShowRecipt.class);
-//                            intent.putExtra("namaResepIntent", namaResep.getText().toString());
-//                            intent.putExtra("waktuMasakIntent", hasilWaktuMasak);
-//                            intent.putExtra("pilihanMasakanIntent", radioButtonPilihanMasakan.getText().toString());
-//                            intent.putExtra("jenisMasakanIntent", hasilJenisMasakan);
-//                            intent.putExtra("bahanMasakanIntent", bahanMasakan.getText().toString());
-//                            intent.putExtra("langkahMemasakIntent", langkahMemasak.getText().toString());
-//                            intent.putExtra("tipeWaktuIntent", radioButtonTipeWaktu.getText().toString());
                         }
                     });
 
                     builder.setNegativeButton(Html.fromHtml("<font color='#777B7E'>Belum</font>"), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
                         }
                     });
 

@@ -42,7 +42,7 @@ import java.util.Map;
 public class EditRecipt extends AppCompatActivity {
     private TextView namaResep, bahanMasakan, langkahMemasak, waktu, status, inputMasakanLain;
     private SeekBar seekbarWaktuMasak;
-    private String resep_nama, hasilWaktuMasak, resep_pilihan, resep_bahan, resep_langkah, waktu_sementara, resep_status_waktu, resep_waktu;
+    private String resep_nama, resep_pilihan, resep_bahan, resep_langkah, waktu_sementara, resep_status_waktu, resep_waktu;
     private String hasilJenisMasakan = "";
     private RadioGroup radioGroup_pilihanMasakan, radiogroupWaktuMasak;
     private RadioButton radioButtonPilihanMasakan, vegetarian, nonVegetarian, status_menit, status_jam, status_hari;
@@ -95,11 +95,6 @@ public class EditRecipt extends AppCompatActivity {
         langkah = getIntent().getStringExtra("langkah");
 
         if (id > 0) {
-//            final DbHelper dbh = new DbHelper(getApplicationContext());
-//            Cursor cursor = dbh.showDetail(id);
-//            cursor.moveToFirst();
-//            if (cursor.getCount()>0){
-//                while(!cursor.isAfterLast()){
             namaResep.setText(String.valueOf(namaResepMemasak));
             waktu.setText(String.valueOf(lamaMemasak));
             status.setText(String.valueOf(statusLamaMemasak));
@@ -135,9 +130,6 @@ public class EditRecipt extends AppCompatActivity {
 
             bahanMasakan.setText(String.valueOf(bahan));
             langkahMemasak.setText(String.valueOf(langkah));
-//                    cursor.moveToNext();
-//                }
-//            }
         }
         //seekbar
         waktu_sementara = waktu.getText().toString();
@@ -199,15 +191,6 @@ public class EditRecipt extends AppCompatActivity {
                         .setPositiveButton("Yakin", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-//                                DbHelper dbh = new DbHelper(getApplicationContext());
-//
-//                                boolean hapusData = dbh.deleteData(id);
-//
-//                                if (hapusData) {
-//                                    Toast.makeText(EditRecipt.this, "Hapus Peminjaman Berhasil", Toast.LENGTH_SHORT).show();
-//                                } else {
-//                                    Toast.makeText(EditRecipt.this, "Hapus Peminjaman Gagal", Toast.LENGTH_SHORT).show();
-//                                }
 
                                 deleteResepWebserver(id, position);
 //                                Intent mainIntent = new Intent(EditRecipt.this, MainActivity.class);
@@ -215,7 +198,7 @@ public class EditRecipt extends AppCompatActivity {
                                 finish();
                             }
                         })
-                        .setNegativeButton(Html.fromHtml("<font color='#48494B'>Tidak</font>"), new DialogInterface.OnClickListener() {
+                        .setNegativeButton(Html.fromHtml("<font color='#777B7E'>Tidak</font>"), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
                             }
@@ -274,28 +257,6 @@ public class EditRecipt extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getApplicationContext(), "Masakan berhasil kamu simpan !", Toast.LENGTH_SHORT).show();
                         editResepWebserver();
-                        //    === sqlite ===
-//                            DbHelper db = new DbHelper(getApplicationContext());
-//                            ReciptHandler resepHandler = new ReciptHandler();
-//                            resepHandler.setNamaResep(resep_nama);
-//                            resepHandler.setLamaMemasak(waktu_sementara);
-//                            resepHandler.setStatusLamaMemasak(resep_status_waktu);
-//                            resepHandler.setPilihan(resep_pilihan);
-//                            resepHandler.setJenis(hasilJenisMasakan);
-//                            resepHandler.setBahan(resep_bahan);
-//                            resepHandler.setLangkah(resep_langkah);
-
-//                            boolean editResep = db.editData(resepHandler, id);
-//
-//                            if(editResep){
-//                                Toast.makeText(EditRecipt.this, "Berhasil Edit Data", Toast.LENGTH_SHORT).show();
-//                            }else{
-//                                Toast.makeText(EditRecipt.this, "Gagal Edit Data", Toast.LENGTH_SHORT).show();
-//                            }
-//                            db.close();
-
-//                        Intent intent = new Intent(EditRecipt.this, MainActivity.class);
-//                        startActivity(intent);
                         finish();
                     }
                 });

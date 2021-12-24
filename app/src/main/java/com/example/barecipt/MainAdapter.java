@@ -73,9 +73,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         View view = layoutInflater.inflate(R.layout.recipt_row, parent, false);
         MainAdapter.ViewHolder viewHolder = new MainAdapter.ViewHolder(view);
         return viewHolder;
-
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main,parent,false);
-//        return new ViewHolder(view);
     }
 
     @Override
@@ -137,34 +134,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 holder.itemView.getContext().startActivity(detailIntent);
             }
         });
-
-//        holder.btnEdit.setOnClickListener(view -> {
-//            PopupMenu popupMenu = new PopupMenu(context,holder.btnEdit);
-//            popupMenu.inflate(R.menu.resep_option);
-//            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//                @Override
-//                public boolean onMenuItemClick(MenuItem menuItem) {
-//
-//                    switch (menuItem.getItemId()){
-//                        case R.id.item_edit: {
-//                            Intent detailIntent = new Intent(holder.itemView.getContext(), EditRecipt.class);
-//                            //                detailIntent.putExtra("position", holder.getAdapterPosition());
-//                            detailIntent.putExtra("id", resepHandler.getId());
-//                            detailIntent.putExtra("nama_resep", resepHandler.getNamaResep());
-//                            detailIntent.putExtra("pilihan", resepHandler.getPilihan());
-//                            detailIntent.putExtra("lama_masakan", resepHandler.getLamaMemasak());
-//                            detailIntent.putExtra("status_lama_masakan", resepHandler.getStatusLamaMemasak());
-//                            detailIntent.putExtra("jenis", resepHandler.getJenis());
-//                            detailIntent.putExtra("bahan", resepHandler.getBahan());
-//                            detailIntent.putExtra("langkah", resepHandler.getLangkah());
-//                            context.startActivity(detailIntent);
-//                            return true;
-//                        }
-//                    }
-//                    return false;
-//                }
-//            });
-//        });
     }
     @Override
     public long getItemId(int position) {

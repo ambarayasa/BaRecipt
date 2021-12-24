@@ -112,14 +112,9 @@ public class RegisterUser extends AppCompatActivity {
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
-//                Log.d("mamam3", "catch error");
             }
-//            dialog.dismiss();
-//            Log.d("mamam4", "aaaaaa");
         }, error -> {
             error.printStackTrace();
-//            dialog.dismiss();
-//            Log.d("mamam5", "error connection");
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

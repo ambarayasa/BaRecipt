@@ -69,53 +69,7 @@ public class ShowRecipt extends AppCompatActivity {
             tampilJenisMasakan.setText(String.valueOf(jenis));
             tampilBahanMasakan.setText(String.valueOf(bahan));
             tampilLangkahMemasak.setText(String.valueOf(langkah));
-
-            //=== sqlite ===
-//            final DbHelper dbh = new DbHelper(getApplicationContext());
-//            Cursor cursor = dbh.showDetail(id);
-//            cursor.moveToFirst();
-//            if (cursor.getCount()>0){
-//                while(!cursor.isAfterLast()){
-//                    tampilNamaResep.setText(cursor.getString(cursor.getColumnIndexOrThrow("nama_resep")));
-//                    tampilWaktuMasak.setText(cursor.getString(cursor.getColumnIndexOrThrow("lama_masakan")) + cursor.getString(cursor.getColumnIndexOrThrow("status_lama_masakan")));
-//                    tampilPilihanMasakan.setText(cursor.getString(cursor.getColumnIndexOrThrow("pilihan")));
-//                    tampilJenisMasakan.setText(cursor.getString(cursor.getColumnIndexOrThrow("jenis")));
-//                    tampilBahanMasakan.setText(cursor.getString(cursor.getColumnIndexOrThrow("bahan")));
-//                    tampilLangkahMemasak.setText(cursor.getString(cursor.getColumnIndexOrThrow("langkah")));
-//                    cursor.moveToNext();
-//                }
-//            }
         }
-
-//        DbHelper dbHelper = new DbHelper(ShowRecipt.this);
-//        SQLiteDatabase db =dbHelper.getReadableDatabase();
-//        cursor = db.rawQuery("SELECT * FROM tb_resep WHERE nama_resep = '"+
-//                getIntent().getExtras().getString("namaResepIntent")+"'", null);
-//        cursor.moveToFirst();
-//        if(cursor.getCount()>0){
-//            tampilNamaResep.setText(cursor.getString(1).toString());
-//            tampilWaktuMasak.setText(cursor.getString(2).toString());
-//            tampilPilihanMasakan.setText(cursor.getString(3).toString());
-//            tampilJenisMasakan.setText(cursor.getString(4).toString());
-//            tampilBahanMasakan.setText(cursor.getString(5).toString());
-//            tampilLangkahMemasak.setText(cursor.getString(6).toString());
-//        }
-
-//        namaResep = getIntent().getExtras().getString("namaResepIntent");
-//        waktuMasak = getIntent().getExtras().getString("waktuMasakIntent");
-//        pilihanMasakan = getIntent().getExtras().getString("pilihanMasakanIntent");
-//        jenisMasakan = getIntent().getExtras().getString("jenisMasakanIntent");
-//        bahanMasakan = getIntent().getExtras().getString("bahanMasakanIntent");
-//        langkahMemasak = getIntent().getExtras().getString("langkahMemasakIntent");
-//        waktuTipe = getIntent().getExtras().getString("tipeWaktuIntent");
-//
-//
-//        tampilNamaResep.setText(namaResep);
-//        tampilWaktuMasak.setText(waktuMasak + " " + waktuTipe);
-//        tampilPilihanMasakan.setText(pilihanMasakan);
-//        tampilJenisMasakan.setText(jenisMasakan);
-//        tampilBahanMasakan.setText(bahanMasakan);
-//        tampilLangkahMemasak.setText(langkahMemasak);
     }
 
     @Override

@@ -32,7 +32,6 @@ public class LoginUser extends AppCompatActivity {
     private EditText email_login, password_login;
     private TextView textView_register;
     private Button btn_login;
-//    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

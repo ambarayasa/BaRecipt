@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     public static RecyclerView recyclerView;
     protected RecyclerView.Adapter mainAdapter;
     public static ArrayList<ReciptHandler> resepHandler = new ArrayList<ReciptHandler>();
-    private Button btn_edit, btn_delete;
     private SharedPreferences preferences;
     public static SwipeRefreshLayout swipeRefreshLayout;
     private TextView userNama;
@@ -74,28 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 tampilListData();
             }
         });
-//        === sqlite ===
-//        final DbHelper dbh = new DbHelper(getApplicationContext());
-//        Cursor cursor = dbh.showData();
-//        cursor.moveToFirst();
-//        if(cursor.getCount()>0){
-//            while(!cursor.isAfterLast()){
-//                ReciptHandler resepHandlerList = new ReciptHandler();
-//                resepHandlerList.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-//                resepHandlerList.setNamaResep(cursor.getString(cursor.getColumnIndexOrThrow("nama_resep")));
-//                resepHandlerList.setPilihan(cursor.getString(cursor.getColumnIndexOrThrow("pilihan")));
-//                resepHandler.add(resepHandlerList);
-//                cursor.moveToNext();
-//            }
-//        }
-//
-//        recyclerView.setHasFixedSize(true);
-//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(mLayoutManager);
-//        mainAdapter = new MainAdapter(resepHandler, MainActivity.this, recyclerView);
-//        recyclerView.setAdapter(mainAdapter);
-//        btnDelete = findViewById(R.id.btn_delete);
-//        btnEdit = findViewById(R.id.btn_edit);
     }
 
     @Override
