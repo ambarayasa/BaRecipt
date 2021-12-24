@@ -3,15 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable-v24/viewbg.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable-v24/warning.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/custom_button.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_edit_note_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_keyboard_arrow_up_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/ic_baseline_playlist_add_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/null_radio_button.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/radio_not_selected.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/radio_selected.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/radio_selector.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/radio_text_selector.xml" value="0.26614583333333336" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/round_button.xml" value="0.26614583333333336" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/drawable/rounded_shape.xml" value="0.14322916666666666" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/activity_about.xml" value="0.20923913043478262" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/activity_edit.xml" value="0.4" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/activity_login_check.xml" value="0.20923913043478262" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/recipt_input.xml" value="0.1947463768115942" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/activity_register.xml" value="0.176" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/recipt_input.xml" value="0.152" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/recipt_row.xml" value="0.31521739130434784" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/layout/recipt_show.xml" value="0.1947463768115942" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/menu/example_menu.xml" value="0.25" />
+        <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/BaRecipt-Klp-Webserver/app/src/main/res/menu/resep_option.xml" value="0.125" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/newPraktikum/BaRecipt - Klp/app/src/main/res/layout/activity_edit.xml" value="0.24094202898550723" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/newPraktikum/BaRecipt - Klp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Ambara/UNUD/PRAKTIKUM/PRAKTIKUM_PROGMOB/newPraktikum/BaRecipt - Klp/app/src/main/res/layout/activity_main.xml" value="0.24094202898550723" />

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -214,7 +215,7 @@ public class EditRecipt extends AppCompatActivity {
                                 finish();
                             }
                         })
-                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(Html.fromHtml("<font color='#48494B'>Tidak</font>"), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.cancel();
                             }
@@ -299,7 +300,7 @@ public class EditRecipt extends AppCompatActivity {
                     }
                 });
 
-                builder.setNegativeButton("Belum", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#48494B'>Belum</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                     }

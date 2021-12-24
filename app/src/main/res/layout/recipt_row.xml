@@ -132,6 +132,7 @@
             android:layout_width="70dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_baseline_edit_note_24"
+            android:visibility="visible"
             android:backgroundTint="@android:color/transparent"
             android:layout_gravity="right"/>
     </LinearLayout>

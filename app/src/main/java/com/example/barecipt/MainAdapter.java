@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.firestore.auth.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,15 +35,16 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
-    public List<ReciptHandler> resepHandlerList;
     private Context context;
+    public List<ReciptHandler> resepHandlerList;
     private RecyclerView recyclerView;
-    private ImageButton btnDelete, btnEdit;
     private SharedPreferences preferences;
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView namaResep;
-        TextView pilihanResep, lamaMasakanResep, statusLamaMasakanResep, jenisResep, bahanResep, langkahResep;
+        private TextView namaResep;
+        private TextView pilihanResep, lamaMasakanResep, statusLamaMasakanResep, jenisResep, bahanResep, langkahResep;
+        private ImageButton btnEdit;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,16 +55,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             jenisResep = itemView.findViewById(R.id.resep_jenis_txt);
             bahanResep = itemView.findViewById(R.id.resep_bahan_txt);
             langkahResep = itemView.findViewById(R.id.resep_langkah_txt);
-            btnDelete = itemView.findViewById(R.id.btn_delete);
             btnEdit = itemView.findViewById(R.id.btn_edit);
-            preferences = context.getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         }
     }
 
     public MainAdapter(List<ReciptHandler> resepHandlerList, Context context, RecyclerView recyclerView) {
-        this.resepHandlerList = resepHandlerList;
         this.context = context;
+        this.resepHandlerList = resepHandlerList;
         this.recyclerView = recyclerView;
+        preferences = context.getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
     }
 
     @NonNull
@@ -70,6 +73,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         View view = layoutInflater.inflate(R.layout.recipt_row, parent, false);
         MainAdapter.ViewHolder viewHolder = new MainAdapter.ViewHolder(view);
         return viewHolder;
+
+//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main,parent,false);
+//        return new ViewHolder(view);
     }
 
     @Override
@@ -82,6 +88,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         holder.jenisResep.setText(String.valueOf(resepHandler.getJenis()));
         holder.bahanResep.setText(String.valueOf(resepHandler.getBahan()));
         holder.langkahResep.setText(String.valueOf(resepHandler.getLangkah()));
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,7 +113,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             }
         });
 
-        btnEdit.setOnClickListener(new View.OnClickListener(){
+        holder.btnEdit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Integer itemId = Integer.valueOf(resepHandler.getId());
@@ -130,6 +137,34 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 holder.itemView.getContext().startActivity(detailIntent);
             }
         });
+
+//        holder.btnEdit.setOnClickListener(view -> {
+//            PopupMenu popupMenu = new PopupMenu(context,holder.btnEdit);
+//            popupMenu.inflate(R.menu.resep_option);
+//            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//                @Override
+//                public boolean onMenuItemClick(MenuItem menuItem) {
+//
+//                    switch (menuItem.getItemId()){
+//                        case R.id.item_edit: {
+//                            Intent detailIntent = new Intent(holder.itemView.getContext(), EditRecipt.class);
+//                            //                detailIntent.putExtra("position", holder.getAdapterPosition());
+//                            detailIntent.putExtra("id", resepHandler.getId());
+//                            detailIntent.putExtra("nama_resep", resepHandler.getNamaResep());
+//                            detailIntent.putExtra("pilihan", resepHandler.getPilihan());
+//                            detailIntent.putExtra("lama_masakan", resepHandler.getLamaMemasak());
+//                            detailIntent.putExtra("status_lama_masakan", resepHandler.getStatusLamaMemasak());
+//                            detailIntent.putExtra("jenis", resepHandler.getJenis());
+//                            detailIntent.putExtra("bahan", resepHandler.getBahan());
+//                            detailIntent.putExtra("langkah", resepHandler.getLangkah());
+//                            context.startActivity(detailIntent);
+//                            return true;
+//                        }
+//                    }
+//                    return false;
+//                }
+//            });
+//        });
     }
     @Override
     public long getItemId(int position) {

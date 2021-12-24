@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -66,6 +67,16 @@
                 android:paddingBottom="10dp"
                 android:textSize="16dp" />
 
+            <TextView
+                android:id="@+id/textemailkosong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password_login"
+                android:text="Password Tidak Boleh Kosong!"
+                android:textColor="#FF3260"
+                android:visibility="gone"
+                android:layout_gravity="left"/>
+
             <EditText
                 android:id="@+id/password_login"
                 android:layout_width="match_parent"
@@ -79,6 +90,16 @@
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
                 android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/textpasswordkosong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password_login"
+                android:layout_gravity="left"
+                android:textColor="#FF3260"
+                android:visibility="gone"
+                android:text="Panjang Password harus 8-16 karakter" />
 
             <Button
                 android:id="@+id/btn_login"

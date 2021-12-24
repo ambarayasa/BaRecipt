@@ -72,16 +72,16 @@ public class RegisterUser extends AppCompatActivity {
     }
 
     private boolean validasi(){
-        if(email_register.length() == 0){
+        if(nama_register.length() == 0){
+            Toast.makeText(RegisterUser.this, "Nama Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if(email_register.length() < 8 || password_register.length() > 16){
             Toast.makeText(RegisterUser.this, "Email Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(password_register.length() == 0){
-            Toast.makeText(RegisterUser.this, "Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        else if(nama_register.length() == 0){
-            Toast.makeText(RegisterUser.this, "Nama Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterUser.this, "Password Minimal 8-16 Karakter", Toast.LENGTH_SHORT).show();
             return false;
         }
         else{

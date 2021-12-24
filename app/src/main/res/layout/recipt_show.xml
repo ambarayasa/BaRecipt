@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/jenisMasakan"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/latoreguler"
                     android:text="Bahan Masakan"
                     android:textColor="@color/black"

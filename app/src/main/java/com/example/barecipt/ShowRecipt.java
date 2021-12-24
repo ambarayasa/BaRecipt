@@ -34,7 +34,6 @@ public class ShowRecipt extends AppCompatActivity {
     private TextView tampilNamaResep, tampilWaktuMasak, tampilPilihanMasakan, tampilJenisMasakan,
             tampilBahanMasakan, tampilLangkahMemasak, tampilStatusWaktuMasak;
     private String namaResep, lamaMemasak, statusLamaMemasak, pilihan, jenis, bahan, langkah;
-    private Button btnHapus, btnEdit;
     private Integer id = 0;
     private ArrayList<ReciptHandler> resepHandler = new ArrayList<ReciptHandler>();
     private DbHelper db;

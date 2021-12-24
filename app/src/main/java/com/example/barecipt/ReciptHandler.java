@@ -4,6 +4,15 @@ public class ReciptHandler {
     private int id;
     private String namaResep,lamaMemasak, pilihan, jenis, bahan, langkah;
     private String statusLamaMemasak;
+    private UserHandler user;
+
+    public UserHandler getUser() {
+        return user;
+    }
+
+    public void setUser(UserHandler user) {
+        this.user = user;
+    }
 
     public ReciptHandler(){
         //

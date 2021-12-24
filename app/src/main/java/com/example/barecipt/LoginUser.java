@@ -1,6 +1,7 @@
 package com.example.barecipt;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -42,8 +43,6 @@ public class LoginUser extends AppCompatActivity {
         password_login = findViewById(R.id.password_login);
         btn_login = findViewById(R.id.btn_login);
         textView_register = findViewById(R.id.link_daftar);
-//        dialog = new ProgressDialog(LoginUser.this);
-//        dialog.setCancelable(false);
 
         textView_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,11 +65,12 @@ public class LoginUser extends AppCompatActivity {
     }
 
     private boolean validasi(){
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         if(email_login.length() == 0){
             Toast.makeText(LoginUser.this, "Email Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
             return false;
         }
-        else if(password_login.length() == 0){
+        else if(password_login.length() == 0) {
             Toast.makeText(LoginUser.this, "Password Tidak Boleh Kosong", Toast.LENGTH_SHORT).show();
             return false;
         }

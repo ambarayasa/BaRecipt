@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<ReciptHandler> resepHandler = new ArrayList<ReciptHandler>();
     private Button btn_edit, btn_delete;
     private SharedPreferences preferences;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    public static SwipeRefreshLayout swipeRefreshLayout;
     private TextView userNama;
 
     @Override
@@ -61,19 +62,15 @@ public class MainActivity extends AppCompatActivity {
         userNama.setText((String.valueOf(preferences.getString("name",""))));
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
-//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         swipeRefreshLayout = findViewById(R.id.swipeMain);
-//        recyclerView.setLayoutManager(mLayoutManager);
 
-//        String stringSetName = preferences.getString("name","");
-//        String stringSetToken = preferences.getString("token","");
-//        Toast.makeText(getApplicationContext(), stringSetName, Toast.LENGTH_SHORT).show();
-//        Log.d("TAG", stringSetToken);
         tampilListData();
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh() {
+            public void onRefresh()
+            {
                 tampilListData();
             }
         });
@@ -111,6 +108,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.logout:
+                AlertDialog.Builder logoutBuilder = new AlertDialog.Builder(MainActivity.this);
+                logoutBuilder.setTitle("Logout");
+                logoutBuilder.setMessage("Yakin ingin logout?");
+                logoutBuilder.setPositiveButton(Html.fromHtml("<font color='#E59001'>Yakin</font>"), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putBoolean("isLoggedIn", false);
+                        editor.apply();
+                        startActivity(new Intent(getApplicationContext(), SplashScreen.class));
+                    }
+                });
+                logoutBuilder.setNegativeButton(Html.fromHtml("<font color='#777B7E'>Kembali</font>"), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                AlertDialog alertDialogLogout = logoutBuilder.create();
+                alertDialogLogout.show();
+                break;
+
             case R.id.about:
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("About BaRecipt");
@@ -125,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                                 "5. I Made Indra Wahyu Wicaksana (1905551151)\n" +
                                 "6. Afrizal Dwi Setiawan (1905551162)"
                 );
-                builder.setNegativeButton("Kembali", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#777B7E'>Kembali</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -133,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -140,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
     public void addRecipt(View view) {
         Intent intent = new Intent(MainActivity.this, CreateRecipt.class);
         startActivity(intent);
-
     }
 
     private void tampilListData() {
@@ -179,10 +199,10 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             swipeRefreshLayout.setRefreshing(false);
         }, error -> {
             error.printStackTrace();
+            swipeRefreshLayout.setRefreshing(false);
         }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
