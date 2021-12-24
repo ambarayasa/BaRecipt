@@ -62,7 +62,7 @@ public class LoginUser extends AppCompatActivity {
                                 @Override
                                 public void onResponse(String response) {
                                     login();
-                                    Toast.makeText(LoginUser.this,"Selamat Datang !",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginUser.this,"Email atau Password salah !",Toast.LENGTH_SHORT).show();
                                 }
                             }, new Response.ErrorListener() {
                         @Override
